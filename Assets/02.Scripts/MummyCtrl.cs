@@ -16,6 +16,7 @@ public class MummyCtrl : Agent
     private Transform tr;
     private Rigidbody rb;
 
+    [System.NonSerialized]
     public Transform targetTr;
 
     public Material goodMt, badMt;
@@ -31,6 +32,7 @@ public class MummyCtrl : Agent
 
         targetTr = tr.parent.Find("Target").GetComponent<Transform>();
         floor = tr.root.Find("Floor").GetComponent<MeshRenderer>();
+        originalMt = floor.material;
     }
 
     // 학습(에피소드)이 시작될 때 마다 호출되는 콜백
@@ -103,14 +105,24 @@ public class MummyCtrl : Agent
     {
         if (coll.collider.CompareTag("DEAD_ZONE"))
         {
+            StartCoroutine(this.ChangeColor(badMt));
             SetReward(-1.0f);
             EndEpisode();
         }
 
         if (coll.collider.CompareTag("TARGET"))
         {
+            StartCoroutine(this.ChangeColor(goodMt));
             SetReward(+1.0f);
             EndEpisode();
         }
+    }
+
+    IEnumerator ChangeColor(Material changeMt)
+    {
+        floor.material = changeMt;
+
+        yield return new WaitForSeconds(0.2f);
+        floor.material = originalMt;
     }
 }

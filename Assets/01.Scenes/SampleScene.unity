@@ -843,6 +843,8 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 1000
   targetTr: {fileID: 0}
+  goodMt: {fileID: 2100000, guid: de6eec1ffb44b444889104c4f7343fbf, type: 2}
+  badMt: {fileID: 2100000, guid: ac066dad500aae14dacb47d78c1bf690, type: 2}
 --- !u!114 &946304115
 MonoBehaviour:
   m_ObjectHideFlags: 0
