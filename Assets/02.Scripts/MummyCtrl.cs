@@ -68,12 +68,26 @@ public class MummyCtrl : Agent
     // 브레인으로 부터 전달 받은 명령
     public override void OnActionReceived(ActionBuffers actions)
     {
-        
+        // 전진/후진
+        // 왼쪽/오른쪽
+
+        // 전달받은 명령대로 행동(Action)
+        var action = actions.ContinuousActions;
+
+        Vector3 dir = (Vector3.forward * action[0]) + (Vector3.right * action[1]);
+        rb.AddForce(dir.normalized * 30.0f);
+
+        // 지속적인 움직임을 유도하기 위한 마이너스 페널티
+        SetReward(-0.001f);
     }
 
     // 개발자 테스트용 가상 명령
     public override void Heuristic(in ActionBuffers actionsOut)
     {
+        var action = actionsOut.ContinuousActions;
+        // 전진/후진
+        action[0] = Input.GetAxis("Vertical"); // Up/Down, W/S  -1.0f ~ 0.0f ~ +1.0f
+        // 좌/우
         
     }
 }
