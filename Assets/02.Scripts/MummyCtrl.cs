@@ -18,6 +18,11 @@ public class MummyCtrl : Agent
 
     public Transform targetTr;
 
+    public Material goodMt, badMt;
+    private Material originalMt;
+    private Renderer floor;
+
+
     // 초기화 작업
     public override void Initialize()
     {
@@ -25,6 +30,7 @@ public class MummyCtrl : Agent
         rb = GetComponent<Rigidbody>();
 
         targetTr = tr.parent.Find("Target").GetComponent<Transform>();
+        floor = tr.root.Find("Floor").GetComponent<MeshRenderer>();
     }
 
     // 학습(에피소드)이 시작될 때 마다 호출되는 콜백
