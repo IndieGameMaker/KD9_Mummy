@@ -74,6 +74,8 @@ public class MummyCtrl : Agent
         // 전달받은 명령대로 행동(Action)
         var action = actions.ContinuousActions;
 
+        Debug.Log($"[0]={action[0]}, [1]={action[1]}");
+
         Vector3 dir = (Vector3.forward * action[0]) + (Vector3.right * action[1]);
         rb.AddForce(dir.normalized * 30.0f);
 
@@ -88,6 +90,6 @@ public class MummyCtrl : Agent
         // 전진/후진
         action[0] = Input.GetAxis("Vertical"); // Up/Down, W/S  -1.0f ~ 0.0f ~ +1.0f
         // 좌/우
-        
+        action[1] = Input.GetAxis("Horizontal"); // Left/Right , A/D
     }
 }
