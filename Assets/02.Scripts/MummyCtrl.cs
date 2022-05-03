@@ -47,6 +47,22 @@ public class MummyCtrl : Agent
     // 주변환경을 관측 및 수집정보를 브레인 전달
     public override void CollectObservations(VectorSensor sensor)
     {
+        /*
+            수치관측 (Vector Observation)
+
+            - 연속 수치 (Continues) : -1.0f ~ 0.0f ~ +1.0f
+            - 이산 수치 (Discrete)  : -1.0f, 0.0f, +1.0f 
+        */
+
+        // 타겟의 위치 관측
+        sensor.AddObservation(targetTr.localPosition);      // 3
+
+        // 자신의 위치를 관측
+        sensor.AddObservation(tr.localPosition);            // 3
+
+        // 속도 관측
+        sensor.AddObservation(rb.velocity.x);               // 1
+        sensor.AddObservation(rb.velocity.z);               // 1
     }
 
     // 브레인으로 부터 전달 받은 명령
