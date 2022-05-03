@@ -92,4 +92,19 @@ public class MummyCtrl : Agent
         // 좌/우
         action[1] = Input.GetAxis("Horizontal"); // Left/Right , A/D
     }
+
+    void OnCollisionEnter(Collision coll)
+    {
+        if (coll.collider.CompareTag("DEAD_ZONE"))
+        {
+            SetReward(-1.0f);
+            EndEpisode();
+        }
+
+        if (coll.collider.CompareTag("TARGET"))
+        {
+            SetReward(+1.0f);
+            EndEpisode();
+        }
+    }
 }
