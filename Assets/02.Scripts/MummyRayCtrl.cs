@@ -45,7 +45,26 @@ public class MummyRayCtrl : Agent
     {
         var action = actions.DiscreteActions; //Discrete (0, 1, 2, 3, ...)
 
-        Debug.Log($"[0]={action[0]}, [1]={action[1]}");
+        //Debug.Log($"[0]={action[0]}, [1]={action[1]}");
+
+        Vector3 dir = Vector3.zero;
+        Vector3 rot = Vector3.zero;
+
+        // Branch 0 => action[0]
+        switch (action[0])
+        {
+            case 1: dir = tr.forward; break;
+            case 2: dir = -tr.forward; break;
+        }
+
+        // Branch 1 => action[1]
+        switch (action[1])
+        {
+            case 1: rot = -tr.up; break; // 왼쪽 회전
+            case 2: rot = tr.up; break;  // 오른쪽 회전
+        }
+
+
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
