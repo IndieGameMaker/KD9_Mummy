@@ -64,7 +64,11 @@ public class MummyRayCtrl : Agent
             case 2: rot = tr.up; break;  // 오른쪽 회전
         }
 
+        tr.Rotate(rot, Time.fixedDeltaTime * 200.0f);
+        rb.AddForce(dir * 1.5f, ForceMode.VelocityChange);
 
+        // 지속적인 움직임을 유도하기 위한 마이너스 페널티
+        AddReward(-1 / (float)MaxStep); // -1/5000 = -0.005f
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
