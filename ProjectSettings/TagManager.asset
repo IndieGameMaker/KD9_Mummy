@@ -6,6 +6,8 @@ TagManager:
   tags:
   - DEAD_ZONE
   - TARGET
+  - GOOD_ITEM
+  - BAD_ITEM
   layers:
   - Default
   - TransparentFX

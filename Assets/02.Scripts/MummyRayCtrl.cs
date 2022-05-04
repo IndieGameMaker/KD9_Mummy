@@ -38,6 +38,7 @@ public class MummyRayCtrl : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
+        // Vector 관측
     }
 
     public override void OnActionReceived(ActionBuffers actions)
@@ -46,5 +47,28 @@ public class MummyRayCtrl : Agent
 
     public override void Heuristic(in ActionBuffers actionsOut)
     {
+        var action = actionsOut.DiscreteActions;
+        action.Clear();
+
+        // 전진/후진 이동 - Branch 0 = (0:정지, 1:전진, 2:후진)
+        if (Input.GetKey(KeyCode.W))
+        {
+            action[0] = 1; // 전진
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            action[0] = 2; // 후진
+        }
+
+        // 좌/우 회전 - Branch 1 = (0:무회전, 1:왼쪽회전, 2:오른쪽회전)
+        if (Input.GetKey(KeyCode.A))
+        {
+            action[1] = 1; // 왼쪽회전
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            action[1] = 2; // 오른쪽회전
+        }
+
     }
 }
