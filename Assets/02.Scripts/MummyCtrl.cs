@@ -49,7 +49,7 @@ public class MummyCtrl : Agent
         targetTr.localPosition = new Vector3(Random.Range(-4.0f, +4.0f),
                                         0.55f,
                                         Random.Range(-4.0f, 4.0f));
-                               
+
     }
 
     // 주변환경을 관측 및 수집정보를 브레인 전달
