@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
-
     public GameObject goodItem;
     public GameObject badItem;
 
@@ -12,6 +11,9 @@ public class StageManager : MonoBehaviour
     public int goodItemCount = 30;
     [Range(10, 50)]
     public int badItemCount = 20;
+
+    public List<GameObject> goodItemList = new List<GameObject>();
+    public List<GameObject> badItemList = new List<GameObject>();
 
     public async void InitStage()
     {
@@ -26,7 +28,7 @@ public class StageManager : MonoBehaviour
             // 불규칙한 회전값 생성
             Quaternion rot = Quaternion.Euler(Vector3.up * Random.Range(0, 360));
 
-            Instantiate(goodItem, transform.position + pos, rot, transform);
+            goodItemList.Add(Instantiate(goodItem, transform.position + pos, rot, transform));
         }
 
         // BadItem 생성
@@ -40,7 +42,7 @@ public class StageManager : MonoBehaviour
             // 불규칙한 회전값 생성
             Quaternion rot = Quaternion.Euler(Vector3.up * Random.Range(0, 360));
 
-            Instantiate(badItem, transform.position + pos, rot, transform);
+            badItemList.Add(Instantiate(badItem, transform.position + pos, rot, transform));
         }
     }
 
