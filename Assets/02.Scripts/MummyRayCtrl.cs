@@ -100,6 +100,26 @@ public class MummyRayCtrl : Agent
         {
             action[1] = 2; // 오른쪽회전
         }
+    }
 
+    void OnCollisionEnter(Collision coll)
+    {
+        if (coll.collider.CompareTag("GOOD_ITEM"))
+        {
+            AddReward(+1.0f);
+            rb.velocity = rb.angularVelocity = Vector3.zero;
+            Destroy(coll.gameObject);
+        }
+
+        if (coll.collider.CompareTag("BAD_ITEM"))
+        {
+            AddReward(-1.0f);
+            EndEpisode();
+        }
+
+        if (coll.collider.CompareTag("DEAD_ZONE"))
+        {
+            AddReward(-0.01f);
+        }
     }
 }
