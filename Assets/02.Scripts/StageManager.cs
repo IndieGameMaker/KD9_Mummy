@@ -28,6 +28,20 @@ public class StageManager : MonoBehaviour
 
             Instantiate(goodItem, pos, rot, transform);
         }
+
+        // BadItem 생성
+        for (int i = 0; i < badItemCount; i++)
+        {
+            // 불규칙한 위치 생성
+            Vector3 pos = new Vector3(Random.Range(-23.0f, 23.0f)
+                                    , 0.05f
+                                    , Random.Range(-23.0f, 23.0f));
+
+            // 불규칙한 회전값 생성
+            Quaternion rot = Quaternion.Euler(Vector3.up * Random.Range(0, 360));
+
+            Instantiate(badItem, pos, rot, transform);
+        }
     }
 
     // Start is called before the first frame update
