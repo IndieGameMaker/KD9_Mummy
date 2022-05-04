@@ -43,10 +43,18 @@ public class MummyRayCtrl : Agent
 
     public override void OnActionReceived(ActionBuffers actions)
     {
+        var action = actions.DiscreteActions; //Discrete (0, 1, 2, 3, ...)
+
+        Debug.Log($"[0]={action[0]}, [1]={action[1]}");
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
     {
+        /*
+            Branch 0 = 0, 1, 2 => 3개
+            Branch 1 = 0, 1, 2 => 3개
+        */
+
         var action = actionsOut.DiscreteActions;
         action.Clear();
 
