@@ -15,7 +15,7 @@ public class StageManager : MonoBehaviour
     public List<GameObject> goodItemList = new List<GameObject>();
     public List<GameObject> badItemList = new List<GameObject>();
 
-    public async void InitStage()
+    public void InitStage()
     {
         // 기존에 생성된 아이템 삭제
         foreach (var obj in goodItemList)
