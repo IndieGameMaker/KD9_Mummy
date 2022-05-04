@@ -26,7 +26,7 @@ public class StageManager : MonoBehaviour
             // 불규칙한 회전값 생성
             Quaternion rot = Quaternion.Euler(Vector3.up * Random.Range(0, 360));
 
-            Instantiate(goodItem, pos, rot, transform);
+            Instantiate(goodItem, transform.position + pos, rot, transform);
         }
 
         // BadItem 생성
@@ -40,7 +40,7 @@ public class StageManager : MonoBehaviour
             // 불규칙한 회전값 생성
             Quaternion rot = Quaternion.Euler(Vector3.up * Random.Range(0, 360));
 
-            Instantiate(badItem, pos, rot, transform);
+            Instantiate(badItem, transform.position + pos, rot, transform);
         }
     }
 
